@@ -1,1 +1,1 @@
-# My Dot Files
+# Quick Machine Setup Files
