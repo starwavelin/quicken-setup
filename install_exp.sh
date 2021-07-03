@@ -1,7 +1,9 @@
+# This is an experimental file
+
 #!/bin/bash
 
 
-CONFIF_FOLDER="$HOME/config"
+CONFIG_FOLDER="$HOME/config"
 CURRENT_FOLDER=`pwd`
 BACKUP_FOLDER="$HOME/.backup"
 
