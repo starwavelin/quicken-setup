@@ -14,8 +14,6 @@ brew install coreutils
 brew install moreutils
 # GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
 brew install findutils
-# GNU `sed`, overwriting the built-in `sed`
-brew install gnu-sed --with-default-names
 
 
 # Bash 4
@@ -28,15 +26,6 @@ brew install gnu-sed --with-default-names
 
 # generic colouriser [log file beautifier] http://kassiopeia.juls.savba.sk/~garabik/software/grc/
 brew install grc
-
-# Install wget with IRI support
-brew install wget --with-iri
-
-# Install more recent versions of some OS X tools
-brew install vim --with-override-system-vi
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/openssh
-brew install homebrew/dupes/screen
 
 
 # run this script when this file changes guy.
