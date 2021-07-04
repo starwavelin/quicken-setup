@@ -5,3 +5,5 @@
 makefile
 .postgres*
 node_modules*
+
+.class
