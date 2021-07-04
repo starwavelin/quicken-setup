@@ -1,4 +1,6 @@
 # This is an experimental file
+# $HOME by default is the "~" or "/Users/USER_NAME" directory,
+# we can use `$ echo $HOME` to view it.
 
 #!/bin/bash
 
@@ -34,7 +36,3 @@ sudo ln -s  $CURRENT_FOLDER/git/gitconfig $HOME/.gitconfig
 
 mv -f $HOME/.gitignore_global $BACKUP_FOLDER/.gitignore_global
 sudo ln -s  $CURRENT_FOLDER/git/gitignore_global $HOME/.gitignore_global
-
-
-# setup vim
-
