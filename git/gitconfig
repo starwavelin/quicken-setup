@@ -1,0 +1,10 @@
+[core]
+	excludesfile = $HOME/.gitignore_global
+	editor = /usr/bin/vim
+[user]
+	name = star {{blah}}
+	email = b {{gmail}}
+[push]
+	default = matching
+[color]
+	ui = true

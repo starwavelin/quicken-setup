@@ -1,4 +1,4 @@
-# This is an experimental file
+# This is an experimental file. Only run this in a GongSi Laptop.
 # $HOME by default is the "~" or "/Users/USER_NAME" directory,
 # we can use `$ echo $HOME` to view it.
 
@@ -27,12 +27,12 @@ fi
 
 # setup zshrc
 mv -f $HOME/.zshrc $BACKUP_FOLDER/.zshrc
-sudo ln -s  $CURRENT_FOLDER/zsh/zshrc $HOME/.zshrc
+sudo ln -s  $CURRENT_FOLDER/zsh/zshrc_haiwen $HOME/.zshrc
 
 
 # setup gitrc
 mv -f $HOME/.gitconfig $BACKUP_FOLDER/.gitconfig
-sudo ln -s  $CURRENT_FOLDER/git/gitconfig $HOME/.gitconfig
+sudo ln -s  $CURRENT_FOLDER/git/gitconfig_haiwen $HOME/.gitconfig
 
 mv -f $HOME/.gitignore_global $BACKUP_FOLDER/.gitignore_global
 sudo ln -s  $CURRENT_FOLDER/git/gitignore_global $HOME/.gitignore_global
