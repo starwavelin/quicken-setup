@@ -1,9 +1,14 @@
 *~
 .DS_Store
 .idea/
-.nvmrc
 makefile
 .postgres*
+
+# Node #
+########
+.nvmrc
 node_modules*
 
+# Java #
+########
 .class
