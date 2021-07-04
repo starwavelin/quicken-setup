@@ -20,13 +20,13 @@ brew install gnu-sed --with-default-names
 
 # Bash 4
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
-brew install bash
-brew tap homebrew/versions
-brew install bash-completion2
+# brew install bash
+# brew tap homebrew/versions
+# brew install bash-completion2
 
-brew install homebrew/completions/brew-cask-completion
+# brew install homebrew/completions/brew-cask-completion
 
-# generic colouriser  http://kassiopeia.juls.savba.sk/~garabik/software/grc/
+# generic colouriser [log file beautifier] http://kassiopeia.juls.savba.sk/~garabik/software/grc/
 brew install grc
 
 # Install wget with IRI support
@@ -40,7 +40,7 @@ brew install homebrew/dupes/screen
 
 
 # run this script when this file changes guy.
-brew install entr
+# brew install entr
 
 # github util. imho better than hub
 brew install gh
@@ -63,12 +63,11 @@ brew install mtr
 #brew install ruby
 #brew install sbt
 
-brew install git
-brew install git-extras
-brew install tig
+# brew install git
+# brew install git-extras
+# brew install tig
 #brew install imagemagick --with-webp
 #brew install node # This installs `npm` too using the recommended installation method
-brew install pv
 brew install rename
 brew install tree
 #brew install zopfli

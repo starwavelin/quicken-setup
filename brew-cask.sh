@@ -35,6 +35,7 @@ brew cask install macdown
 
 # apps
 
+brew install --cask youdaodict
 brew cask install google-chrome
 brew cask install google-chrome-canary
 brew cask install firefox
