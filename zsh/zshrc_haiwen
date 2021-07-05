@@ -97,6 +97,9 @@ alias dc="docker-compose"
 alias d="docker"
 alias sp-data-svc="salary-protection-data-service"
 
+# Brew (Assume no Admin rights)
+export PATH="$HOME/homebrew/bin:$PATH"
+
 # Java domain
 JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home"
 export JAVA_HOME
