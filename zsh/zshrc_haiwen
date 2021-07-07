@@ -101,7 +101,7 @@ alias sp-data-svc="salary-protection-data-service"
 export PATH="$HOME/homebrew/bin:$PATH"
 
 # Java domain
-JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home"
+JAVA_HOME="$HOME/homebrew/opt/openjdk"
 export JAVA_HOME
 export CLASS_PATH=".:$JAVA_HOME/lib"
 export PATH="$JAVA_HOME/bin:$PATH"
