@@ -12,8 +12,7 @@
 
 
 # Env
-#brew install --cask java
-#brew install --cask java16
+brew install java
 
 
 # Dev tool
