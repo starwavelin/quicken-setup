@@ -320,7 +320,7 @@ function checkImage() {
   docker pull havenlife/uw-debian:$1
 }
 
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
 
 # MMProxyAssist envivonment helper
-source /Users/mm19632/.pki/mmproxy_env_helper
+# source /Users/mm19632/.pki/mmproxy_env_helper
