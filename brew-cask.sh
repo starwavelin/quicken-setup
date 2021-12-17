@@ -22,7 +22,7 @@ brew install --cask sourcetree
 brew install --cask visual-studio-code
 brew install --cask dbeaver-community
 brew install --cask postman
-brew install --cask insomnia
+#brew install --cask insomnia
 # brew install --cask macvim
 # brew install --cask sqlitestudio
 # brew install --cask webstorm
@@ -43,8 +43,8 @@ brew install --cask sogouinput
 brew install --cask firefox
 brew install --cask slack
 brew install --cask iina
-brew install --cask rectangle
-brew install --cask drawio
+#brew install --cask rectangle
+#brew install --cask drawio
 #brew install --cask bettertouchtool
 #brew install --cask macid
 # brew install --cask evernote
