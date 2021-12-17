@@ -1,0 +1,321 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH=/Users/xl70588/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="agnoster"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias js="jekyll server"
+alias dc="docker-compose"
+alias d="docker"
+alias sp-data-svc="salary-protection-data-service"
+
+# Brew (Assume no Admin rights)
+# export PATH="$HOME/homebrew/bin:$PATH"
+
+# Java domain
+CELLAR_PATH="/usr/local/Cellar"
+JAVA_HOME="$CELLAR_PATH/openjdk/17.0.1_1"
+export JAVA_HOME
+export PATH="$JAVA_HOME/bin:$PATH"
+
+# node domain
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Common across
+
+function dockerprune() {
+  cd ~/Documents/gitlab/salary-protection/docker
+  docker container prune && docker volume prune && docker image prune
+  cd -
+}
+
+# HavenSecure (salary-protection repo)
+function hardcompile_hs() {
+  rm -rf ./node_modules && npm i && npm run build
+}
+
+function dlog() {
+  cd ~/Documents/gitlab/salary-protection/docker
+  docker-compose logs -f --tail 300 $1
+  cd -
+}
+
+function bsp() {
+  cd ~/Documents/gitlab/salary-protection
+  npm run build:salary-protection && npm run build:salary-protection-static
+  cd -
+}
+
+function bspw() {
+  cd ~/Documents/gitlab/salary-protection
+  npm run build:salary-protection:watch
+  cd -
+}
+
+function bhs() {
+  cd ~/Documents/gitlab/salary-protection
+  npm run build:haven-secure && npm run build:haven-secure-static
+  cd -
+}
+
+function bhsw() {
+  cd ~/Documents/gitlab/salary-protection
+  npm run build:haven-secure:watch
+  cd -
+}
+
+function bhsapps() {
+  cd ~/Documents/gitlab/salary-protection
+  npm run build:apps
+  cd -
+}
+
+function dhs() {
+  cd ~/Documents/gitlab/salary-protection
+  npm run docker:run:dev
+  cd -
+}
+
+# bring up sp containers + afficiency mocks + uw mocks + PA mocks
+function dhsmock() {
+  cd ~/Documents/gitlab/salary-protection
+  npm run docker:run:dev:mocks
+  cd -
+}
+
+function pulldepend() {
+  cd ~/Documents/gitlab/salary-protection
+  npm run docker:pull:dependencies
+  cd -
+}
+
+function dhsdepend() {
+  cd ~/Documents/gitlab/salary-protection
+  npm run docker:run:dependencies
+  cd -
+}
+
+function autotestinit() {
+    npm run init && npm run webdriver:update && npm run webdriver:start
+}
+
+function autotest() {
+  npm run secure:start-test $1 $2 $3
+}
+
+function autotestall() {
+  npm run secure:start-test-suite All $1 $2
+}
+
+function debug() {
+  cd ~/Documents/gitlab/salary-protection/docker
+  npm run docker:run:dev:debug $1
+  cd -
+}
+
+function debugreg() {
+  cd ~/Documents/gitlab/salary-protection/docker
+  npm run test:regression:local:setup && npm run build && npm run test:regression:local:debug
+  cd -
+}
+
+# Haven and UW repos
+function hardcompile() {
+  rm -rf ./node_modules && npm i && npm run clean && npm run compile:ts
+}
+
+function dlogha() {
+  cd ~/Documents/gitlab/haven/docker
+  docker-compose logs -f --tail 300 $1
+  cd -
+}
+
+function dloguw() {
+  cd ~/Documents/gitlab/underwriting/docker
+  docker-compose logs -f --tail 300 $1
+  cd -
+}
+
+# build Coverpath
+function bCP() {
+  cd ~/Documents/gitlab/haven
+  npm run build:coverpath-agent && npm run build:coverpath-client
+  cd -
+}
+
+# build Haven and Admin
+function bHA() {
+  cd ~/Documents/gitlab/haven
+  npm run build:haven-static && npm run build:haven && npm run build:admin && npm run build:telesales
+  cd -
+}
+
+function bSI() {
+  cd ~/Documents/gitlab/haven
+  npm run build:haven-simple-static && npm run build:haven-simple
+  cd -
+}
+
+# debug a container
+function debugha() {
+  cd ~/Documents/gitlab/haven/docker
+  docker-compose -f docker-compose.yml -f docker-compose-node-inspect.yml up -d $1
+  cd -
+}
+
+function debuguw() {
+  cd ~/Documents/gitlab/underwriting/docker
+  docker-compose -f docker-compose.yml -f docker-compose-dev-local-ports.yml -f docker-compose-node-inspect.yml up -d $1
+  cd -
+}
+
+# docker-compose up containers
+function duw() {
+  cd ~/Documents/gitlab/underwriting/docker
+  docker-compose -f ./docker-compose.yml -f ./docker-compose-dev-local-ports.yml up -d
+  cd -
+}
+
+function duw_restart() {
+  cd ~/Documents/gitlab/underwriting/docker
+  docker-compose -f ./docker-compose.yml -f ./docker-compose-dev-local-ports.yml restart $1
+  cd -
+}
+
+function dCP() {
+  cd ~/Documents/gitlab/haven/docker
+  docker-compose -f ./docker-compose.yml -f ./docker-compose-dev-local-ports.yml up -d hit-workflow product admin coverpath-agent coverpath-client esign followup hit-data-svc startup quotes webservice mockwebservice
+  cd -
+}
+
+function dHA() {
+  cd ~/Documents/gitlab/haven/docker
+  docker-compose -f ./docker-compose.yml -f ./docker-compose-dev-local-ports.yml up -d hit-workflow product admin haven esign followup hit-data-svc startup quotes webservice mockwebservice
+  cd -
+}
+
+function dSI() {
+  cd ~/Documents/gitlab/haven/docker
+  docker-compose up -d quotes haven-simple telesales nginx-telesales
+  cd -
+}
+
+function dcps() {
+  docker-compose -f ./docker-compose.yml -f ./docker-compose-dev-local-ports.yml ps
+}
+
+function runreg() {
+  cd ~/Documents/gitlab/underwriting/docker
+  npm run docker:run:regression-local
+  cd -
+}
+
+function ut() {
+  npm run tsc && npm run test
+}
+
+# update product-service esp. migration script needs run
+function updateProd() {
+  cd ~/Documents/gitlab/product
+  git pull
+  npm run compile:ts
+  cd docker
+  dc down
+  npm run docker:build
+  dc up -d
+  cd -
+}
+
+function checkImage() {
+  docker pull havenlife/uw-debian:$1
+}
