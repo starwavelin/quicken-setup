@@ -166,6 +166,29 @@ function dhs() {
   cd -
 }
 
+# dd way
+function upham() {
+  cd ~/Documents/gitlab/docker-dependencies
+  ./devbox pull ham-app haven-account-manager-api cookie-monster moth-zero
+  # ./devbox pull cookie-monster database ham-app haven-account-manager-api moth-zero nginx-ham-app redis
+  ./devbox sbu ham
+  cd ~/Documents/gitlab/salary-protection
+}
+
+function upuw() {
+  cd ~/Documents/gitlab/docker-dependencies
+  ./devbox pull uw-workflow uw-nginx-admin
+  ./devbox sbu underwriting
+  cd ~/Documents/gitlab/salary-protection
+}
+
+function upsp() {
+  cd ~/Documents/gitlab/docker-dependencies
+  ./devbox pull salary-protection haven-secure salary-protection-workflow
+  ./devbox sbu salary-protection
+  cd ~/Documents/gitlab/salary-protection
+}
+
 # bring up sp containers + afficiency mocks + uw mocks + PA mocks
 function dhsmock() {
   cd ~/Documents/gitlab/salary-protection
