@@ -226,6 +226,12 @@ function debug() {
   cd -
 }
 
+function debugwithmock() {
+  cd ~/Documents/gitlab/salary-protection/docker
+  npm run docker:run:dev:mocks:debug $1
+  cd -
+}
+
 function debugreg() {
   cd ~/Documents/gitlab/salary-protection/docker
   npm run test:regression:local:setup && npm run build && npm run test:regression:local:debug
