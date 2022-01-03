@@ -348,3 +348,8 @@ function updateProd() {
 function checkImage() {
   docker pull havenlife/uw-debian:$1
 }
+
+# Angular Specific
+function nglocal() {
+  ng serve --port $1
+}
