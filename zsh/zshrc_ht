@@ -100,7 +100,7 @@ alias d="docker"
 SP_DATA_SVC="salary-protection-data-service"
 export DEVBOX_HAVEN_LOCAL_VOLUMES=true
 export TELE_SERVICES="telesales nginx-telesales"
-export TELE_DEPS="haven-simple hit-data-svc hit-snap-svc elastic-message-processor hit-workflow workflow-scheduler startup workflow-robot policy-admin product quotes uw-workflow"
+export TELE_DEPS="haven-simple product quotes hit-data-svc hit-snap-svc elastic-message-processor hit-workflow workflow-scheduler startup workflow-robot policy-admin uw-workflow haven-secure"
 
 # Brew (Assume no Admin rights)
 # export PATH="$HOME/homebrew/bin:$PATH"
