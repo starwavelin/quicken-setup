@@ -95,12 +95,15 @@ source $ZSH/oh-my-zsh.sh
 alias js="jekyll server"
 alias dc="docker-compose"
 alias d="docker"
+alias awsume=". awsume"
 
 # Env Variables
 SP_DATA_SVC="salary-protection-data-service"
 export DEVBOX_HAVEN_LOCAL_VOLUMES=true
-export TELE_SERVICES="telesales nginx-telesales"
+export TELE="telesales nginx-telesales"
 export TELE_DEPS="haven-simple product quotes hit-data-svc hit-snap-svc elastic-message-processor hit-workflow workflow-scheduler startup workflow-robot policy-admin uw-workflow haven-secure"
+export TELE_DEPS_COMMON="haven-simple hit-snap-svc elastic-message-processor hit-workflow workflow-scheduler startup workflow-robot uw-workflow hit-data-svc" # and kill existing api-gateway
+export TELE_DEPS_TERM="haven hit-snap-svc elastic-message-processor hit-workflow workflow-scheduler startup workflow-robot uw-workflow hit-data-svc" # and kill existing api-gateway
 
 # Brew (Assume no Admin rights)
 # export PATH="$HOME/homebrew/bin:$PATH"
@@ -174,8 +177,8 @@ function dhs() {
 # dd way
 function upham() {
   cd ~/Documents/gitlab/docker-dependencies
-  ./devbox pull ham-app haven-account-manager-api cookie-monster moth-zero
-  # ./devbox pull cookie-monster database ham-app haven-account-manager-api moth-zero nginx-ham-app redis
+  ./devbox pull ham-app ham-api cookie-monster moth-zero
+  # ./devbox pull cookie-monster database ham-app ham-api moth-zero nginx-ham-app redis
   ./devbox sbu ham
   cd ~/Documents/gitlab/salary-protection
 }
@@ -268,15 +271,27 @@ function bCP() {
 }
 
 # build Haven and Admin
-function bHA() {
+function btele() {
   cd ~/Documents/gitlab/haven
-  npm run build:haven-static && npm run build:haven && npm run build:admin && npm run build:telesales
+  npm run tsc:apps && npm run build:telesales && npm run build:telesales-static
   cd -
 }
 
-function bSI() {
+function bsi() {
   cd ~/Documents/gitlab/haven
-  npm run build:haven-simple-static && npm run build:haven-simple
+  npm run build:haven-simple-static && npm run build:haven-simple && npm run build:server
+  cd -
+}
+
+function bsiconcur() {
+  cd ~/Documents/gitlab/haven
+  npx concurrently "npm:build:haven-simple" "npm:build:haven-simple-static" "npm:build:server"
+  cd -
+}
+
+function bHA() {
+  cd ~/Documents/gitlab/haven
+  npm run build:haven-static && npm run build:haven && npm run build:admin && npm run build:telesales
   cd -
 }
 
@@ -358,3 +373,6 @@ function checkImage() {
 function nglocal() {
   ng serve --port $1
 }
+
+# Created by `pipx` on 2022-03-23 20:42:25
+export PATH="$PATH:/Users/xl70588/.local/bin"
