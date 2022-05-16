@@ -289,9 +289,15 @@ function bsiconcur() {
   cd -
 }
 
-function bHA() {
+function bha() {
   cd ~/Documents/gitlab/haven
-  npm run build:haven-static && npm run build:haven && npm run build:admin && npm run build:telesales
+  npm run build:haven-static && npm run build:haven && npm run build:server
+  cd -
+}
+
+function bhaconcur() {
+  cd ~/Documents/gitlab/haven
+  npx concurrently "npm:build:haven" "npm:build:haven-static" "npm:build:server"
   cd -
 }
 
