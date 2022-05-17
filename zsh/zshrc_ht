@@ -273,7 +273,7 @@ function bCP() {
 # build Haven and Admin
 function btele() {
   cd ~/Documents/gitlab/haven
-  npm run tsc:apps && npm run build:telesales && npm run build:telesales-static
+  npm run tsc:apps && npm run build:telesales && npm run build:telesales-static && npm run build:server
   cd -
 }
 
