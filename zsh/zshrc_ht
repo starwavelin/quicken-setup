@@ -100,10 +100,11 @@ alias awsume=". awsume"
 # Env Variables
 SP_DATA_SVC="salary-protection-data-service"
 export DEVBOX_HAVEN_LOCAL_VOLUMES=true
-export TELE="telesales nginx-telesales"
-export TELE_DEPS="haven-simple product quotes hit-data-svc hit-snap-svc elastic-message-processor hit-workflow workflow-scheduler startup workflow-robot policy-admin uw-workflow haven-secure"
-export TELE_DEPS_COMMON="haven-simple hit-snap-svc elastic-message-processor hit-workflow workflow-scheduler startup workflow-robot uw-workflow hit-data-svc" # and kill existing api-gateway
-export TELE_DEPS_TERM="haven hit-snap-svc elastic-message-processor hit-workflow workflow-scheduler startup workflow-robot uw-workflow hit-data-svc" # and kill existing api-gateway
+export TELE=(telesales nginx-telesales)
+export TELE_DEPS=(haven-simple product quotes hit-data-svc hit-snap-svc elastic-message-processor hit-workflow workflow-scheduler startup workflow-robot policy-admin uw-workflow haven-secure)
+export TELE_DEPS_COMMON=(haven-simple hit-snap-svc elastic-message-processor hit-workflow workflow-scheduler startup workflow-robot uw-workflow hit-data-svc) # and kill existing api-gateway
+export TELE_DEPS_TERM=(telesales nginx-telesales haven hit-snap-svc elastic-message-processor hit-workflow workflow-scheduler startup workflow-robot hit-data-svc uw-workflow api-gateway pdfstream) # and kill existing api-gateway
+export SP_ONLY=(telesales nginx-telesales hit-snap-svc elastic-message-processor workflow-scheduler startup workflow-robot hit-data-svc uw-workflow api-gateway pdfstream quotes policy-admin)
 
 # Brew (Assume no Admin rights)
 # export PATH="$HOME/homebrew/bin:$PATH"
@@ -125,6 +126,10 @@ function dockerprune() {
   cd ~/Documents/gitlab/salary-protection/docker
   docker container prune && docker volume prune && docker image prune
   cd -
+}
+
+function dockersystemprune() {
+  docker system prune --all --volumes
 }
 
 # HavenSecure (salary-protection repo)
@@ -177,10 +182,15 @@ function dhs() {
 # dd way
 function upham() {
   cd ~/Documents/gitlab/docker-dependencies
-  ./devbox pull ham-app ham-api cookie-monster moth-zero
-  # ./devbox pull cookie-monster database ham-app ham-api moth-zero nginx-ham-app redis
+  # ./devbox pull ham-app ham-api cookie-monster moth-zero database nginx-ham-app redis
   ./devbox sbu ham
-  cd ~/Documents/gitlab/salary-protection
+  ./devbox up cookie-monster moth-zero
+}
+
+function upspdeps() {
+    ./devbox sbu ham
+    ./devbox up cookie-monster moth-zero
+    ./devbox up product product-startup pdfstream api-gateway quotes telesales hit-data-svc metadata-server metron-startup
 }
 
 function upuw() {
@@ -382,3 +392,7 @@ function nglocal() {
 
 # Created by `pipx` on 2022-03-23 20:42:25
 export PATH="$PATH:/Users/xl70588/.local/bin"
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
