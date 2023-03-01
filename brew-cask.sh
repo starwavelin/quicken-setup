@@ -37,7 +37,7 @@ brew install --cask alfred
 brew install --cask beyond-compare
 brew install --cask the-unarchiver
 brew install --cask youdaodict
-brew install --cask sogouinput
+# brew install --cask sogouinput
 # brew install --cask google-chrome
 # brew install --cask google-chrome-canary
 brew install --cask firefox
@@ -57,7 +57,7 @@ brew install --cask iina
 #brew install --cask tunnelblick
 #brew install --cask flycut
 # brew install --cask wechat
-#brew install --cask Kitematic 
+#brew install --cask Kitematic
 #brew install --cask gemini
 #brew install --cask cheatsheet
 # brew install --cask pgadmin4
