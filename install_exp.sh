@@ -25,9 +25,9 @@ then
 	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-# setup zshrc
+# setup zshrc [comp]
 mv -f $HOME/.zshrc $BACKUP_FOLDER/.zshrc
-sudo ln -s  $CURRENT_FOLDER/zsh/zshrc_ht $HOME/.zshrc
+sudo ln -s  $CURRENT_FOLDER/zsh/zshrc_haiwen $HOME/.zshrc
 
 
 # setup gitrc

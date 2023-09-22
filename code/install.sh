@@ -6,7 +6,7 @@ BACKUP_FOLDER="$HOME/.backup"
 if [ ! -d "$BACKUP_FOLDER" ]
 then
   echo "creating backup folder ......"
-   mkdir -p $BACKUP_FOLDER
+  mkdir -p $BACKUP_FOLDER
 fi
 
 mkdir $BACKUP_FOLDER/Code
