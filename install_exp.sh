@@ -27,7 +27,7 @@ fi
 
 # setup zshrc
 mv -f $HOME/.zshrc $BACKUP_FOLDER/.zshrc
-sudo ln -s  $CURRENT_FOLDER/zsh/zshrc_haiwen $HOME/.zshrc
+sudo ln -s  $CURRENT_FOLDER/zsh/zshrc_ht $HOME/.zshrc
 
 
 # setup gitrc
