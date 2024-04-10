@@ -17,7 +17,6 @@ brew install java
 
 # Dev tool
 brew install --cask iterm2
-brew install --cask atom
 brew install --cask sourcetree
 brew install --cask visual-studio-code
 brew install --cask dbeaver-community
